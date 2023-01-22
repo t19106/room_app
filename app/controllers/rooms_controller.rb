@@ -1,5 +1,9 @@
 class RoomsController < ApplicationController
-  before_action :check_login, only: [:new, :create]
+  before_action :check_login, only: [:index, :new, :create, :show]
+
+  def index
+    @rooms = Room.where(user: current_user)
+  end
 
   def new
     @room = current_user.rooms.build
@@ -13,6 +17,10 @@ class RoomsController < ApplicationController
     else
       #not yet written
     end
+  end
+
+  def show
+    @room = Room.find(params[:id])
   end
 
   private

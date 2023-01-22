@@ -1,0 +1,8 @@
+<% if @rooms %>
+  <% @rooms.each do |room| %>
+    <%= link_to room.name, room_path(room) %><br>
+    <%= room.summary %><br>
+    <%= room.price %><br>
+    <%= room.created_at %><br>
+  <% end %>
+<% end %>
