@@ -1,0 +1,11 @@
+<h1>Searches#search</h1>
+<% unless @records.empty? %>
+  <% @records.each do |room| %>
+    <%= link_to room.name, room_path(room) %><br>
+    <%= room.summary %><br>
+    <%= room.price %><br>
+    <%= room.created_at %><br>
+  <% end %>
+<% else %>
+  検索結果なし
+<% end %>

@@ -1,0 +1,33 @@
+<%= form_with url: search_path, method: :get do |f| %>
+  <%= f.label "検索方法" %>
+  <%= f.label "エリア" %>
+  <%= f.radio_button :genre, :area, {checked: true, onclick: 'flg0(this.checked);'} %>
+  <%= f.label "フリーワード" %>
+  <%= f.radio_button :genre, :content, {onclick: 'flg1(this.checked);'} %>
+  <%= f.submit '検索' %>
+
+  <%= f.select :area, options_for_select([['東京', 'tokyo'], ['大阪', 'osaka']]), {}, {id: 'area'} %>
+  <%= f.text_field :content, {disabled: true, id: 'content'} %>
+<% end %>
+
+<script>
+function flg0 (ischecked) {
+  if (ischecked == true) {
+    document.getElementById("area").disabled = false;
+    document.getElementById("content").disabled = true;
+  } else {
+    document.getElementById("area").disabled = true;
+    document.getElementById("content").disabled = false;
+  }
+}
+
+function flg1 (ischecked) {
+  if (ischecked == true) {
+    document.getElementById("area").disabled = true;
+    document.getElementById("content").disabled = false;
+  } else {
+    document.getElementById("area").disabled = false;
+    document.getElementById("content").disabled = true;
+  }
+}
+</script>
