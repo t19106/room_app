@@ -6,7 +6,7 @@
   <%= f.radio_button :genre, :content, {onclick: 'flg1(this.checked);'} %>
   <%= f.submit '検索' %>
 
-  <%= f.select :area, options_for_select([['東京', 'tokyo'], ['大阪', 'osaka']]), {}, {id: 'area'} %>
+  <%= f.select :area, options_for_select(Room.areas), {}, {id: 'area'} %>
   <%= f.text_field :content, {disabled: true, id: 'content'} %>
 <% end %>
 

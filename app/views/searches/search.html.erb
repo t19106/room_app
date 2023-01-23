@@ -1,9 +1,11 @@
 <h1>Searches#search</h1>
 <% unless @records.empty? %>
+  検索件数：<%= @records.count %>件<br>
   <% @records.each do |room| %>
     <%= link_to room.name, room_path(room) %><br>
-    <%= room.summary %><br>
-    <%= room.price %><br>
+    <%= room.address %><br>
+    <%= room.detail %><br>
+    <%= room.price %>円<br>
     <%= room.created_at %><br>
   <% end %>
 <% else %>
