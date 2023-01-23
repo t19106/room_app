@@ -1,5 +1,6 @@
 class Room < ApplicationRecord
   belongs_to :user
+  validates :name, :detail, :price, :address, presence: true
 
   def self.areas
     ["東京", "大阪", "京都", "札幌"]

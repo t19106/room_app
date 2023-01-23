@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :reservations do
     post :confirmation
   end
-  resources :users, only: [:index, :create]
+  resources :users, only: [:index, :create, :edit, :update]
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

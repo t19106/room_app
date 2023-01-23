@@ -1,5 +1,7 @@
 アカウント一覧ページ
 <%= @user.name %>
 <br>
+<%= link_to "アカウント情報を編集する", edit_user_path(@user) %>
+<br>
 <%= render "layouts/search" %>
 <%= link_to "ログアウト", logout_path %>
