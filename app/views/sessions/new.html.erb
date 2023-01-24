@@ -1,8 +1,11 @@
-<h1>ログイン</h1>
+<h2>ログイン</h2>
+<% flash.each do |message_type, message| %>
+  <div class="flash"><%= message %></div>
+<% end %>
 <%= form_for(@user, url: login_path) do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.label :email %><br>
+  <%= f.email_field :email %><br>
+  <%= f.label :password %><br>
+  <%= f.password_field :password %><br>
   <%= f.submit %>
 <% end %>

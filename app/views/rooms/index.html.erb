@@ -1,6 +1,7 @@
-<h2>あなたが作成した施設一覧</h2>
+<h2>あなたが登録した施設一覧</h2>
 <% unless @rooms.empty? %>
-  <% @rooms.each do |room| %>
+  <% @rooms.each_with_index do |room, i| %>
+    <%= i + 1 %>件目<br>
     <% if room.room_image? %>
       <%= image_tag room.room_image.url, class: "room_image" %>
     <% else %>

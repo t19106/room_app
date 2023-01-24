@@ -88,3 +88,10 @@
 .reservation-info {
     margin-bottom: 30px;
 }
+.flash {
+    background-color: #dd2222;
+    color: #eee;
+    margin-bottom: 18px;
+    padding: 10px 14px;
+    width: 320px;
+}
