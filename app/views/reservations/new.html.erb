@@ -1,0 +1,11 @@
+<h1>Reservations#new</h1>
+<%= form_with model: @reservation, url: reservations_confirmation_path, data: { turbo: false } do |f| %>
+  <%= f.label :checkin %>
+  <%= f.date_field :checkin %>
+  <%= f.label :checkout %>
+  <%= f.date_field :checkout %>
+  <%= f.label :guest %>
+  <%= f.number_field :guest %>
+  <%= f.hidden_field :room_id, value: @reservation.room_id %>
+  <%= f.submit %>
+<% end %>

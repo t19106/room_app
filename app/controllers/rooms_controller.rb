@@ -12,10 +12,9 @@ class RoomsController < ApplicationController
   def create
     room = current_user.rooms.build(room_params)
     if room.save
-      @room = current_user.rooms.build
-      render 'new'
+      redirect_to rooms_path
     else
-      #not yet written
+      redirect_to new_room_path
     end
   end
 
@@ -25,7 +24,7 @@ class RoomsController < ApplicationController
 
   private
   def room_params
-    params.require(:room).permit(:name, :detail, :summary, :price, :address)
+    params.require(:room).permit(:name, :detail, :summary, :price, :address, :room_image)
   end
 
   def check_login
