@@ -6,12 +6,19 @@ class ReservationsController < ApplicationController
   end
 
   def new
+    unless params[:room_id]
+      redirect_back(fallback_location: users_path)
+    end
     @reservation = current_user.reservations.build(room_id: params[:room_id])
   end
 
   def confirmation
     @reservation = current_user.reservations.build(reservation_params)
     @room = Room.find(reservation_params[:room_id])
+    unless @reservation.valid?
+      #flash
+      redirect_to new_reservation_path(room_id: reservation_params[:room_id])
+    end
   end
 
   def create

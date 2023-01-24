@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   namespace :users do
     resources :profiles, only: [:edit, :update]
   end
-
   resources :users, only: [:index, :create, :edit, :update]
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
+  root 'sessions#new'
 end

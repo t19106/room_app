@@ -1,12 +1,14 @@
-<h1>Searches#search</h1>
+<h2>検索結果</h2>
 <% unless @records.empty? %>
-  検索件数：<%= @records.count %>件<br>
-  <% @records.each do |room| %>
-    <%= link_to room.name, room_path(room) %><br>
-    <%= room.address %><br>
-    <%= room.detail %><br>
-    <%= room.price %>円<br>
-    <%= room.created_at %><br>
+  <p>検索件数：<%= @records.count %>件</p>
+  <% @records.each_with_index do |room, i| %>
+    <div class="search-info">
+      <%= i + 1 %>件目<br>
+      施設名：<%= link_to room.name, room_path(room) %><br>
+      住所：<%= room.address %><br>
+      施設詳細：<%= room.detail %><br>
+      料金：<%= room.price %>円（/日）<br>
+    </div>
   <% end %>
 <% else %>
   検索結果なし

@@ -1,11 +1,12 @@
-<h1>Reservations#new</h1>
+<h2>宿泊を予約する</h2>
 <%= form_with model: @reservation, url: reservations_confirmation_path, data: { turbo: false } do |f| %>
-  <%= f.label :checkin %>
-  <%= f.date_field :checkin %>
-  <%= f.label :checkout %>
-  <%= f.date_field :checkout %>
-  <%= f.label :guest %>
-  <%= f.number_field :guest %>
+  <%= f.label :checkin %><br>
+  <%= f.date_field :checkin, required: true %><br>
+  <%= f.label :checkout %><br>
+  <%= f.date_field :checkout, required: true %><br>
+  <%= f.label :guest %><br>
+  <%= f.number_field :guest, required: true %>人<br>
   <%= f.hidden_field :room_id, value: @reservation.room_id %>
-  <%= f.submit %>
+  <%= f.submit %><br>
+  <%= link_to "前のページへ戻る", :back %>
 <% end %>

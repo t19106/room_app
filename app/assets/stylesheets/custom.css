@@ -1,8 +1,90 @@
-.avatar {
-    width: 80px;
-    height: 80px;
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
-
+.main {
+    width: 800px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+.header-wrapper {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 20px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px 10px;
+}
+.header {
+    background-color: #ddd;
+    margin-bottom: 20px;
+    position: relative;
+}
+.header-elem {
+    display: flex;
+    justify-content: space-between;
+}
+.header-title {
+    display: inline-block;
+    font-size: 18px;
+}
+.header-title a {
+    text-decoration: none;
+    color: #222;
+}
+.avatar {
+    width: 40px;
+    height: 40px;
+}
 .room_image {
     width: 400px;
+}
+#nav {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+#nav li {
+    list-style: none;
+    text-align: center;
+    font-size: 14px;
+    line-height: 2.8;
+    cursor: pointer;
+}
+#nav li a {
+    text-decoration: none;
+    color: #000;
+}
+#nav li ul {
+    border: 1px solid #eee;
+    display: none;
+    position: absolute;
+    background-color: #fff;
+}
+#nav li ul a {
+    text-align: center;
+    width: 200px;
+    padding: 10px;
+}
+#nav li ul li {
+    border-top: 1px solid #eee;
+}
+#nav li ul li:hover {
+    background-color: #eee;
+}
+.search-form {
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+.search-form input[type="submit"] {
+    padding: 2px 6px;
+}
+.search-info {
+    margin: 10px 0;;
+}
+.reservation-info {
+    margin-bottom: 30px;
 }

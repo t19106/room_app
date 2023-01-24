@@ -1,5 +1,11 @@
-<%= @room.name %><br>
-<%= @room.summary %><br>
-<%= @room.price %><br>
-<%= link_to "予約する", new_reservation_path(room_id: @room.id) %>
-<%= link_to "戻る", :back %>
+<h2>施設詳細</h2>
+<% if @room.room_image? %>
+<%= image_tag @room.room_image.url, class: "room_image" %>
+<% else %>
+<image src="/assets/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png" class="room_image">
+<% end %><br>
+施設名：<%= @room.name %><br>
+紹介文：<%= @room.summary %><br>
+値段：<%= @room.price %>円（/一泊）<br>
+<%= link_to "宿泊予約を行う", new_reservation_path(room_id: @room.id) %><br>
+<%= link_to "前のページへ戻る", :back %>

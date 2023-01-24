@@ -9,8 +9,51 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
-    <%= yield %>
+    <header class="header">
+      <div class="header-wrapper">
+        <h1 class="header-title"><%= link_to "宿泊予約アプリ", users_path %></h1>
+        <% if logged_in? %>
+          <ul id="nav">
+            <li><%= @current_user.name %> 様
+              <ul>
+                <li><%= link_to "登録施設リスト", rooms_path %></li>
+                <li><%= link_to "予約一覧", reservations_path %></li>
+                <li><%= link_to "プロフィール編集", edit_users_profile_path(@current_user) %></li>
+                <li><%= link_to "アカウント情報編集", edit_user_path(@current_user) %></li>
+                <li><%= link_to "ログアウト", logout_path %></li>
+              </ul>
+            </li>
+          </ul>
+          <% if @current_user.avatar? %>
+            <%= image_tag @current_user.avatar.url, class: "avatar" %>
+          <% else %>
+            <image src="/assets/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png" class="avatar">
+          <% end %>
+          　|　
+          <%= render "layouts/search" %>
+        <% else %>
+          <%= link_to "ログインする", login_path %>
+          <%= link_to "新規登録を行う", signup_path %>
+        <% end %>
+      </div>
+    </header>
+    <main class="main">
+      <%= yield %>
+    </main>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+      $(function() {
+        $('#nav li').click(function(e) {
+          $('ul', this).toggle();
+        })
+      });
+      $('#area').on('click', function() {
+        $('#genre-area').prop('checked', true);
+      });
+      $('#content').on('click', function() {
+        $('#genre-content').prop('checked', true);
+      });
+    </script>
   </body>
 </html>

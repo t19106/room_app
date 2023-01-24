@@ -1,1 +1,24 @@
-aabbbbb
+<h2>あなたの予約一覧</h2>
+<% unless @reservations.empty? %>
+  <% @reservations.each_with_index do |reservation, i| %>
+    <div class="reservation-info">
+      <%= i + 1 %>件目<br>
+      <% room = Room.find(reservation.room_id) %>
+      <% if room.room_image? %>
+        <%= image_tag room.room_image.url, class: "room_image" %>
+      <% else %>
+        <image src="/assets/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png" class="room_image">
+      <% end %><br>
+      施設名：<%= room.name %><br>
+      紹介文：<%= room.summary %><br>
+      合計料金：
+      <% stay = (reservation.checkout - reservation.checkin).to_i / 1.day %>
+      <%= reservation.guest * stay * room.price %>円<br>
+      チェックイン：<%= reservation.checkin.strftime("%Y/%m/%d") %><br>
+      チェックアウト：<%= reservation.checkout.strftime("%Y/%m/%d") %><br>
+      予約確定日時：<%= reservation.created_at.strftime("%Y/%m/%d %H:%M") %><br>
+    </div>
+  <% end %>
+<% else %>
+  まだ宿泊予約していません。<br>
+<% end %>

@@ -1,13 +1,18 @@
-<% if @rooms %>
+<h2>あなたが作成した施設一覧</h2>
+<% unless @rooms.empty? %>
   <% @rooms.each do |room| %>
     <% if room.room_image? %>
       <%= image_tag room.room_image.url, class: "room_image" %>
     <% else %>
       <image src="/assets/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png" class="room_image">
     <% end %><br>
-    <%= link_to room.name, room_path(room) %><br>
-    <%= room.summary %><br>
-    <%= room.price %><br>
-    <%= room.created_at %><br>
+    施設名：<%= link_to room.name, room_path(room) %><br>
+    紹介文：<%= room.summary %><br>
+    値段：<%= room.price %>円（/一泊）<br>
+    作成日：<%= room.created_at.strftime("%Y/%m/%d") %><br>
+    <br>
   <% end %>
+<% else %>
+  まだ宿泊施設を登録していません。<br>
 <% end %>
+<%= link_to "宿泊施設を登録する", new_room_path %>
