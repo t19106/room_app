@@ -24,7 +24,7 @@ class RoomsController < ApplicationController
 
   private
   def room_params
-    params.require(:room).permit(:name, :detail, :summary, :price, :address)
+    params.require(:room).permit(:name, :detail, :summary, :price, :address, :room_image)
   end
 
   def check_login
