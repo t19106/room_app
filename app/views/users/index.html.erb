@@ -1,12 +1,3 @@
-アカウント一覧ページ
-<%= @user.name %>
-<% if @user.avatar? %>
-  <%= image_tag @user.avatar.url, class: "avatar" %>
-<% else %>
-  <image src="/assets/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png" class="avatar">
-<% end %>
-<br>
-<%= link_to "アカウント情報を編集する", edit_user_path(@user) %>
-<br>
-<%= render "layouts/search" %>
-<%= link_to "ログアウト", logout_path %>
+<h2>アカウントページ</h2>
+メールアドレス：<%= @user.email %><br>
+パスワード：***********<br>

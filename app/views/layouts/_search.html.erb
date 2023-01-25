@@ -1,33 +1,12 @@
-<%= form_with url: search_path, method: :get do |f| %>
-  <%= f.label "検索方法" %>
-  <%= f.label "エリア" %>
-  <%= f.radio_button :genre, :area, {checked: true, onclick: 'flg0(this.checked);'} %>
-  <%= f.label "フリーワード" %>
-  <%= f.radio_button :genre, :content, {onclick: 'flg1(this.checked);'} %>
-  <%= f.submit '検索' %>
-
-  <%= f.select :area, options_for_select(Room.areas), {}, {id: 'area'} %>
-  <%= f.text_field :content, {disabled: true, id: 'content'} %>
-<% end %>
-
-<script>
-function flg0 (ischecked) {
-  if (ischecked == true) {
-    document.getElementById("area").disabled = false;
-    document.getElementById("content").disabled = true;
-  } else {
-    document.getElementById("area").disabled = true;
-    document.getElementById("content").disabled = false;
-  }
-}
-
-function flg1 (ischecked) {
-  if (ischecked == true) {
-    document.getElementById("area").disabled = true;
-    document.getElementById("content").disabled = false;
-  } else {
-    document.getElementById("area").disabled = false;
-    document.getElementById("content").disabled = true;
-  }
-}
-</script>
+<div class="search-form">
+  <%= form_with url: search_path, method: :get do |f| %>
+    施設検索
+    <%= f.label "エリア" %>
+    <%= f.radio_button :genre, :area, { checked: params[:genre] == "area" ? true : false, id: "genre-area" } %>
+    <%= f.select :area, options_for_select(Room.areas, selected: params[:area]), id: 'area' %>
+    <%= f.label "フリーワード" %>
+    <%= f.radio_button :genre, :content, { checked: params[:genre] == "content" ? true : false, id: "genre-content" } %>
+    <%= f.text_field :content, { value: params[:content], id: 'content' } %>
+    <%= f.submit '検索' %>
+  <% end %>
+</div>

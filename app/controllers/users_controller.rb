@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to users_path
     else
-      redirect_to signup_path
+      redirect_to signup_path, flash: { alert: "操作に失敗しました。" }
     end
   end
 
@@ -28,13 +28,11 @@ class UsersController < ApplicationController
       if current_user.update(user_params)
         redirect_to users_path
       else
-        flash.now[:alert] = "操作に失敗しました。"
-        redirect_to edit_user_path(current_user)
+        redirect_to edit_user_path, flash: { success: "操作に成功しました。" }
       end
     else  
       @user = current_user
-      flash.now[:alert] = "現在のパスワードが違います。"
-      redirect_to edit_user_path(current_user)
+      redirect_to edit_user_path, flash: { alert: "操作に失敗しました。" }
     end
   end
 
