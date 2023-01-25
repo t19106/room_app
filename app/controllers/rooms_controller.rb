@@ -14,7 +14,7 @@ class RoomsController < ApplicationController
     if room.save
       redirect_to rooms_path
     else
-      redirect_to new_room_path
+      redirect_to new_room_path, flash: { success: "操作に失敗しました。" }
     end
   end
 

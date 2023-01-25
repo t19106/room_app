@@ -16,8 +16,7 @@ class ReservationsController < ApplicationController
     @reservation = current_user.reservations.build(reservation_params)
     @room = Room.find(reservation_params[:room_id])
     unless @reservation.valid?
-      #flash
-      redirect_to new_reservation_path(room_id: reservation_params[:room_id])
+      redirect_to new_reservation_path, flash: { success: "操作に失敗しました。" }, room_id: reservation_params[:room_id]
     end
   end
 
@@ -26,7 +25,7 @@ class ReservationsController < ApplicationController
     if reservation.save
       redirect_to reservations_path
     else
-      #not yet written
+      redirect_to new_reservation_path, flash: { success: "操作に失敗しました。" }, room_id: reservation_params[:room_id]
     end
   end
 
