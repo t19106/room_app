@@ -1,0 +1,19 @@
+<h2>こちらの宿泊内容でよろしいですか？</h2>
+<%= form_for @reservation do |f| %>
+  <%= f.label :checkin %><br>
+  <%= @reservation.checkin.strftime("%Y/%m/%d") %>
+  <%= f.hidden_field :checkin %><br>
+  <%= f.label :checkout %><br>
+  <%= @reservation.checkout.strftime("%Y/%m/%d") %>
+  <%= f.hidden_field :checkout %><br>
+  宿泊日数<br>
+  <%= stay = (@reservation.checkout - @reservation.checkin).to_i / 1.day %>日<br>
+  <%= f.label :guest %><br>
+  <%= @reservation.guest %>人
+  <%= f.hidden_field :guest %><br>
+  支払い金額<br>
+  <%= @reservation.guest * stay * @room.price %>円<br>
+  <%= f.hidden_field :room_id %>
+  <%= f.submit %><br>
+  <%= link_to "前のページへ戻る", :back %>
+<% end %>

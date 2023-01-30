@@ -1,0 +1,16 @@
+<h2>アカウント情報編集</h2>
+<% flash.each do |message_type, message| %>
+  <div class="flash"><%= message %></div>
+<% end %>
+メールアドレスのみの変更はできません。<br>
+<%= form_for @user do |f| %>
+  <%= f.label :email %><br>
+  <%= f.email_field :email %><br>
+  <%= f.label "現在のパスワード" %><br>
+  <%= f.password_field :password_now %><br>
+  <%= f.label :password %><br>
+  <%= f.password_field :password %><br>
+  <%= f.label :password_confirmation %><br>
+  <%= f.password_field :password_confirmation %><br>
+  <%= f.submit %>
+<% end %>

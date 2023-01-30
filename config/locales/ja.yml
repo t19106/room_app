@@ -1,0 +1,30 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー 
+      room: 施設
+      reservation: 予約
+    attributes:
+        user:
+          name: ユーザー名
+          password: パスワード
+          password_confirmation: パスワード（確認用）
+          password_now: 現在のパスワード
+          email: メールアドレス
+          avatar: プロフィール画像
+          summary: 自己紹介
+        room:
+          name: 施設名
+          detail: 施設詳細
+          summary: 紹介文
+          price: 料金
+          address: 住所
+          room_image: 施設画像
+        reservation:
+          checkin: チェックイン
+          checkout: チェックアウト
+          guest: 人数
+  # 全てのmodelで共通して使用するattributesを定義
+  attributes:
+    created_at: 作成日
+    updated_at: 更新日

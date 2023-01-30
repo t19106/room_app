@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get '/search', to: 'searches#search'
+  resources :rooms, only: [:index, :new, :create, :show]
+  resources :reservations, only: [:index, :new, :create]
+  namespace :reservations do
+    post :confirmation
+  end
+  namespace :users do
+    resources :profiles, only: [:edit, :update]
+  end
+  resources :users, only: [:index, :create, :edit, :update]
+  get '/signup', to: 'users#new'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
+  root 'sessions#new'
 end

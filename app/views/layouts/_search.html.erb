@@ -1,0 +1,12 @@
+<div class="search-form">
+  <%= form_with url: search_path, method: :get do |f| %>
+    施設検索
+    <%= f.label "エリア" %>
+    <%= f.radio_button :genre, :area, { checked: params[:genre] == "area" ? true : false, id: "genre-area" } %>
+    <%= f.select :area, options_for_select(Room.areas, selected: params[:area]), id: 'area' %>
+    <%= f.label "フリーワード" %>
+    <%= f.radio_button :genre, :content, { checked: params[:genre] == "content" ? true : false, id: "genre-content" } %>
+    <%= f.text_field :content, { value: params[:content], id: 'content' } %>
+    <%= f.submit '検索' %>
+  <% end %>
+</div>

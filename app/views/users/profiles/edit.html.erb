@@ -1,0 +1,10 @@
+<h2>プロフィール情報編集</h2>
+<%= form_with model: @user, url: users_profile_path do |f| %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+  <%= f.label :summary %><br>
+  <%= f.text_field :summary %><br>
+  <%= f.label :avatar %><br>
+  <%= f.file_field :avatar %><br>
+  <%= f.submit %>
+<% end %>
